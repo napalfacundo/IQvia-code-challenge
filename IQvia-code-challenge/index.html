@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IQVIA - Apollo Coding Challenge</title>
+    <link rel="shortcut icon" type="image/jpg" href="assets\img\favicon.png" />
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://kit.fontawesome.com/1377817e99.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <main>
+        <form action="" class="sheet">
+            <ul class="step-list">
+                <li class="step" id="step-1">
+                    <fieldset class="step-wrapper">
+                        <div class="step-col">
+                            <span class="step-bullet"></span>
+                        </div>
+                        <div class="step-col">
+                            <h2 class="step-title">Update Response</h2>
+                            <div class="step-inputs">
+                                <div class="form-radio">
+                                    <input type="radio" name="consent" id="consent">
+                                    <label class="label" for="consent">I give my consent</label>
+                                </div>
+
+                                <div class="form-radio">
+                                    <input type="radio" name="consent" id="not-consent">
+                                    <label class="label" for="not-consent">I do not give my consent</label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </fieldset>
+                </li>
+
+                <li class="step step-hide" id="step-2">
+                    <fieldset class="step-wrapper">
+                        <div class="step-col">
+                            <span class="step-bullet"></span>
+                            <span class="step-progress"></span>
+                        </div>
+                        <div class="step-col">
+                            <h2 class="step-title">Select a method</h2>
+                            <div class="step-inputs" id="step2-radio-buttons">
+                                <div class="method-option">
+                                    <div class="form-radio">
+                                        <input type="radio" name="method" id="contxt-msg">
+                                        <label class="label" for="contxt-msg">
+                                            Text message (SMS)
+                                        </label>
+                                    </div>
+                                    <span>*** *** 3456</span>
+                                </div>
+
+                                <div class="method-option">
+                                    <div class="form-radio">
+                                        <input type="radio" name="method" id="vcall">
+                                        <label class="label" for="vcall">
+                                            <span>Voice call</span>
+                                        </label>
+                                    </div>
+                                    <span>*** *** 3456</span>
+                                </div>
+
+                                <div class="method-option">
+                                    <div class="form-radio">
+                                        <input type="radio" name="method" id="email">
+                                        <label class="label" for="email">
+                                            <span>Email</span>
+                                        </label>
+                                    </div>
+                                    <span>f****@iqvia.com</span>
+                                </div>
+
+                                <button class="btn" id="step2-send-code">
+                                    Send code
+                                </button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </li>
+                <li class="step step-hide" id="step-3">
+                    <fieldset class="step-wrapper">
+                        <div class="step-col">
+                            <span class="step-bullet"></span>
+                        </div>
+
+                        <div class="step-col">
+                            <h2 class="step-title">Enter code</h2>
+                            <p class="method-code-advice">An SMS has been sent to your mobile phone.
+                                Please check your
+                                messasges ( *** *** 3456 ) to obtain the validation code</p>
+
+                            <div class="step-inputs">
+                                <input disabled class="form-text" type="text" name="code" id="verif-code"
+                                    placeholder="Code">
+                            </div>
+                            <div style="margin-bottom: 40px;">
+                                <a href="#">Resend code</a>
+                            </div>
+                        </div>
+                    </fieldset>
+                </li>
+                <li class="step" id="step-submit">
+                    <button class="btn btn-full" disabled type="submit" id="form-submit">
+                        Verify
+                    </button>
+                </li>
+            </ul>
+        </form>
+    </main>
+    <script async src="./assets/js/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,343 @@
+/*------------------------------------*\
+  #CUSTOM
+\*------------------------------------*/
+
+:root {
+    margin: 0;
+    padding: 0;
+    font-family: "ProximaNova", Sans-serif;
+    /*------------------------------------*\
+    # Shared values
+    \*------------------------------------*/
+    --sheet-width: 400px;
+}
+
+/* font import */
+
+@font-face {
+    font-family: "ProximaNova";
+    src: url("/assets/fonts/ProximaNova-Regular.otf");
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* SHEET */
+
+.sheet {
+    width: var(--sheet-width);
+    height: auto;
+    padding: 24px 24px 32px 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.04);
+    border: solid 1px #e9e9e9;
+    background-color: #ffffff;
+}
+
+/* STEP */
+
+.step-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: li;
+}
+
+.step-hide {
+    display: none;
+}
+
+.step {
+    margin: 4px 0;
+    padding: 0;
+    counter-increment: li;
+}
+
+.step-wrapper {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    grid-gap: 8px;
+    border: none;
+    padding: 0;
+}
+
+.step-col {
+    position: relative;
+}
+
+.step-title {
+    margin: 0 0 20px 0;
+    font-size: 16px;
+    color: #000;
+}
+
+.step-inputs {
+    padding: 0 0 44px;
+}
+
+.step-inputs>* {
+    margin: 8px 0;
+}
+
+.step-inputs .btn {
+    margin: 16px 0;
+}
+
+.step-bullet::before {
+    content: counter(li);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #00c221;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.step-progress::after, .step-progress::before {
+    top: 28px;
+    height: calc(100% - 28px);
+    width: 2px;
+    border-radius: 1px;
+    background: #b5b5b5;
+    position: absolute;
+    content: "";
+    left: 10px;
+}
+
+.step-progress::after {
+    height: 0;
+    transition: all 200ms linear;
+}
+
+/* STEP STATES */
+
+.step--completed .step-bullet::before {
+    border-radius: 0;
+    background-color: transparent;
+    content: "";
+    width: 18px;
+    height: 10px;
+    border: 3px solid #00c221;
+    border-bottom: none;
+    border-left: none;
+    transform: rotate(-235deg);
+}
+
+.step--completed .step-progress::before {
+    background-color: #00c221;
+}
+
+.step--disabled .step-bullet::before {
+    background-color: #b5b5b5;
+}
+
+.step--disabled .step-title {
+    color: #b5b5b5;
+}
+
+.step--disabled .method-code-advice {
+    color: #b5b5b5;
+}
+
+.step--disabled .form-text {
+    opacity: .5;
+}
+
+/* FORM SHARED */
+
+.form input[type="text"] {
+    width: 272px;
+    height: 24px;
+    margin: 16px 0 30px;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0);
+    border: solid 1px #d9d9d9;
+    background-color: #ffffff;
+}
+
+.form input[type="text"]::placeholder {
+    font-family: ProximaNova;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #999999;
+}
+
+.form-text, .form-text::placeholder {
+    font-family: ProximaNova;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 5px;
+    width: 100%;
+}
+
+.form input[type="text"]:focus {
+    box-shadow: 0 0 3px #ddd;
+}
+
+.form-radio {
+    position: relative;
+}
+
+.form-radio input[type="radio"] {
+    visibility: hidden;
+    position: absolute;
+}
+
+.form-radio input[type="radio"]:focus {
+    outline: 3px solid red;
+}
+
+.form-radio label {
+    padding: 0 8px 0 24px;
+    position: relative;
+}
+
+.form-radio label:hover {
+    cursor: pointer;
+}
+
+.form-radio label::before, .form-radio label::after {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 4px;
+    left: 4px;
+    transition: all 200ms ease-in;
+}
+
+@keyframes smooth {
+    from {
+        background-color: auto;
+        border: auto;
+    }
+    to {
+        background-color: rgba(91, 114, 147, 0.2);
+        border: 1px solid rgba(7, 104, 253, 0.5);
+    }
+}
+
+.form-radio label:hover:before {
+    animation: smooth 200ms ease-in forwards;
+    box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.5);
+}
+
+.form-radio label::after {
+    transform: scale(.5);
+}
+
+.form-radio label::before {
+    background: white;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #b5b5b5;
+    left: 0;
+    top: 0;
+}
+
+.form-radio input[type="radio"]:checked+label::before {
+    border: 1px solid #0768fd;
+}
+
+.form-radio input[type="radio"]:checked+label::after {
+    background-color: #0768fd;
+    transform: scale(1);
+}
+
+.method-option {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    grid-gap: 15px;
+}
+
+/*------------------------------------*\
+  #BUTTONS
+\*------------------------------------*/
+
+.btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(7, 104, 253, 0.32), 0 4px 16px 0 rgba(0, 0, 0, 0.04);
+    background-color: #0768fd;
+    min-width: 110px;
+    max-width: 100%;
+    font-family: ProximaNova;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    color: #ffffff;
+    transition: box-shadow 200ms ease-in;
+}
+
+.btn:hover {
+    box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.5);
+}
+
+.btn:active {
+    font-size: 18px;
+}
+
+.btn:focus {
+    box-shadow: 0 0 3px #ddd;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.btn[disabled] {
+    opacity: 0.4;
+    box-shadow: none;
+}
+
+.btn .btn-submit {
+    margin-top: 60px;
+}
+
+.method-code-advice {
+    width: 312px;
+    height: 72px;
+    font-family: ProximaNova;
+    font-size: 13px;
+    line-height: 1.85;
+    color: #595959;
+}
+
+a {
+    color: #0768fd;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:hover {
+    position: relative;
+    bottom: 2px;
+    left: 2px;
+}
+
+a:active {
+    color: #595959;
+}
+
+a:focus {
+    outline: 1px solid #0768fd;
+}
