@@ -5,14 +5,18 @@
 :root {
     margin: 0;
     padding: 0;
-    font-family: "ProximaNova", Sans-serif;
+    
     /*------------------------------------*\
-    # Shared values
+    #Shared values
     \*------------------------------------*/
     --sheet-width: 400px;
-}
+    --disabled-color: #b5b5b5;
+    --primary-color: #0768fd;
+    --active-color: #00c221;
+    --primary-font: "ProximaNova";
 
-/* font import */
+    font-family: var(--primary-font);
+}
 
 @font-face {
     font-family: "ProximaNova";
@@ -29,7 +33,7 @@ main {
     box-sizing: border-box;
 }
 
-/* SHEET */
+/* Sheet */
 
 .sheet {
     width: var(--sheet-width);
@@ -41,7 +45,9 @@ main {
     background-color: #ffffff;
 }
 
-/* STEP */
+/*------------------------------------*\
+  #STEP
+\*------------------------------------*/
 
 .step-list {
     margin: 0;
@@ -95,7 +101,7 @@ main {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background-color: #00c221;
+    background-color: var(--active-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,7 +113,7 @@ main {
     height: calc(100% - 28px);
     width: 2px;
     border-radius: 1px;
-    background: #b5b5b5;
+    background: var(--disabled-color);
     position: absolute;
     content: "";
     left: 10px;
@@ -118,7 +124,9 @@ main {
     transition: all 200ms linear;
 }
 
-/* STEP STATES */
+/*------------------------------------*\
+   #Step states
+\*------------------------------------*/
 
 .step--completed .step-bullet::before {
     border-radius: 0;
@@ -126,33 +134,35 @@ main {
     content: "";
     width: 18px;
     height: 10px;
-    border: 3px solid #00c221;
+    border: 3px solid var(--active-color);
     border-bottom: none;
     border-left: none;
     transform: rotate(-235deg);
 }
 
 .step--completed .step-progress::before {
-    background-color: #00c221;
+    background-color: var(--active-color);
 }
 
 .step--disabled .step-bullet::before {
-    background-color: #b5b5b5;
+    background-color: var(--disabled-color);
 }
 
 .step--disabled .step-title {
-    color: #b5b5b5;
+    color: var(--disabled-color);
 }
 
 .step--disabled .method-code-advice {
-    color: #b5b5b5;
+    color: var(--disabled-color);
 }
 
 .step--disabled .form-text {
     opacity: .5;
 }
 
-/* FORM SHARED */
+/*------------------------------------*\
+   #FORM SHARED
+\*------------------------------------*/
 
 .form input[type="text"] {
     width: 272px;
@@ -166,7 +176,7 @@ main {
 }
 
 .form input[type="text"]::placeholder {
-    font-family: ProximaNova;
+    font-family: var(--primary-font);
     font-size: 16px;
     font-weight: normal;
     font-stretch: normal;
@@ -177,7 +187,7 @@ main {
 }
 
 .form-text, .form-text::placeholder {
-    font-family: ProximaNova;
+    font-family: var(--primary-font);
     font-size: 16px;
     height: 40px;
     line-height: 40px;
@@ -196,10 +206,6 @@ main {
 .form-radio input[type="radio"] {
     visibility: hidden;
     position: absolute;
-}
-
-.form-radio input[type="radio"]:focus {
-    outline: 3px solid red;
 }
 
 .form-radio label {
@@ -248,17 +254,17 @@ main {
     background: white;
     width: 16px;
     height: 16px;
-    border: 1px solid #b5b5b5;
+    border: 1px solid var(--disabled-color);
     left: 0;
     top: 0;
 }
 
 .form-radio input[type="radio"]:checked+label::before {
-    border: 1px solid #0768fd;
+    border: 1px solid var(--primary-color);
 }
 
 .form-radio input[type="radio"]:checked+label::after {
-    background-color: #0768fd;
+    background-color: var(--primary-color);
     transform: scale(1);
 }
 
@@ -266,6 +272,15 @@ main {
     display: grid;
     grid-template-columns: 180px 1fr;
     grid-gap: 15px;
+}
+
+.method-code-advice {
+    width: 312px;
+    height: 72px;
+    font-family: var(--primary-font);
+    font-size: 13px;
+    line-height: 1.85;
+    color: #595959;
 }
 
 /*------------------------------------*\
@@ -277,7 +292,7 @@ main {
     border-radius: 4px;
     border: none;
     box-shadow: 0 4px 8px 0 rgba(7, 104, 253, 0.32), 0 4px 16px 0 rgba(0, 0, 0, 0.04);
-    background-color: #0768fd;
+    background-color: var(--primary-color);
     min-width: 110px;
     max-width: 100%;
     font-family: ProximaNova;
@@ -293,7 +308,7 @@ main {
 }
 
 .btn:active {
-    font-size: 18px;
+    font-weight: bold;
 }
 
 .btn:focus {
@@ -313,17 +328,13 @@ main {
     margin-top: 60px;
 }
 
-.method-code-advice {
-    width: 312px;
-    height: 72px;
-    font-family: ProximaNova;
-    font-size: 13px;
-    line-height: 1.85;
-    color: #595959;
-}
+
+/*------------------------------------*\
+  #LINKS
+\*------------------------------------*/
 
 a {
-    color: #0768fd;
+    color: var(--primary-color);
     cursor: pointer;
     text-decoration: none;
 }
@@ -339,5 +350,5 @@ a:active {
 }
 
 a:focus {
-    outline: 1px solid #0768fd;
+    outline: 1px solid var(--primary-color);
 }
