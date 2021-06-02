@@ -8,6 +8,7 @@ const STEP_COMPLETED_CLASS = 'step--completed';
 const STEP_HIDE_CLASS = 'step-hide';
 const STEP_DISABLED_CLASS = 'step--disabled';
 const STEP_PROGRESS_CLASS = 'step-progress';
+const STEP_ERROR_INPUT = 'error-msg';
 
 const LIMIT = 12;
 
@@ -95,11 +96,21 @@ const step3Logic = () => {
 
     step3verifCode.addEventListener('input', (event) => {
         const value = event.target.value;
-        
+        const textInput = document.querySelector('#error-msg');
+
+       
         if(value.match(/^[0-9]*$/)) {
             formSubmitBtn.disabled = false;
+            textInput.style.visibility = "hidden";
+            step3verifCode.style.boxShadow = "none";
         } else { 
             formSubmitBtn.disabled = true;
+            const errorMsg = () => {
+                textInput.style.visibility = "visible";
+                step3verifCode.style.boxShadow = "0 0 13px red";
+                return textInput;
+            };
+            errorMsg();
         }
     })
 };
