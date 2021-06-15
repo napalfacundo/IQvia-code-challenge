@@ -8,7 +8,6 @@ const STEP_COMPLETED_CLASS = 'step--completed';
 const STEP_HIDE_CLASS = 'step-hide';
 const STEP_DISABLED_CLASS = 'step--disabled';
 const STEP_PROGRESS_CLASS = 'step-progress';
-const STEP_ERROR_INPUT = 'error-msg';
 
 const LIMIT = 12;
 
@@ -50,7 +49,7 @@ const step1Logic = () => {
     const bulletParent = step1.querySelector(STEP_BULLET_SELECTOR).parentNode;
 
     consentInput.addEventListener('change', () => {
-        state.stepsComplete = [1];
+        state.stepsComplete = [1]; 
         bulletParent.appendChild(createProgress());
         step1.classList.add(STEP_COMPLETED_CLASS)
         actualHidenSteps.forEach((stepElement) => {
@@ -59,7 +58,7 @@ const step1Logic = () => {
         });
         step2.classList.remove(STEP_DISABLED_CLASS);
     });
-
+        
     notConsentInput.addEventListener('change', () => {
         state.stepsComplete = [];
         removeProgress(bulletParent);
@@ -74,7 +73,6 @@ const step1Logic = () => {
 const step2Logic = () => {
 
     const handlerChangeInput = (event) => {
-        const valueSelected = event.target.value;
         step2SendCodeBtn.disabled = false;
     };
 
@@ -86,15 +84,15 @@ const step2Logic = () => {
         event.preventDefault();
         step2.classList.add(STEP_COMPLETED_CLASS);
         step3.classList.remove(STEP_DISABLED_CLASS);
-        step3Logic();
+        step3Logic(); 
     });
 
 };
 
 const step3Logic = () => {
     step3verifCode.disabled = false;
-
     step3verifCode.addEventListener('input', (event) => {
+
         const value = event.target.value;
         const textInput = document.querySelector('#error-msg');
 
@@ -107,14 +105,13 @@ const step3Logic = () => {
             formSubmitBtn.disabled = true;
             const errorMsg = () => {
                 textInput.style.visibility = "visible";
-                step3verifCode.style.boxShadow = "0 0 13px red";
+                step3verifCode.style.boxShadow = "0 0 13px #bb2626";
                 return textInput;
             };
             errorMsg();
         }
     })
 };
-
 
 
 const main = () => {
